@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	    http://www.springframework.org/schema/beans/spring-beans.xsd
+	    http://www.springframework.org/schema/context
+	    http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <bean class="ro.devbank.repository.UserRepository"
+          id="userRepository"/>
+
+    <bean class="ro.devbank.service.LoginService"
+          id="loginService">
+        <constructor-arg ref="userRepository"/>
+    </bean>
+
+    <bean class="ro.devbank.controller.LoginController"
+          id="loginController">
+        <constructor-arg ref="loginService"/>
+    </bean>
+
+</beans>
